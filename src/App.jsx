@@ -14,12 +14,7 @@ function App() {
   });
 
   const handleSidebarSelect = (field, value) => {
-    setFormData(prev => {
-      const currentValue = prev[field];
-      // If field is empty, just set it. If not, append with a newline.
-      const newValue = currentValue ? `${currentValue}\n${value}` : value;
-      return { ...prev, [field]: newValue };
-    });
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   return (
