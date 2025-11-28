@@ -1,5 +1,5 @@
 import React from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, Terminal } from 'lucide-react';
 
 const PromptPreview = ({ formData }) => {
   const [copied, setCopied] = React.useState(false);
@@ -78,17 +78,20 @@ ${formData.materiel || '[ ]'}
   return (
     <div className="glass-panel p-6 h-full flex flex-col animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-foreground">Prompt Généré</h2>
+        <div className="flex items-center gap-2">
+          <Terminal className="w-5 h-5 text-primary" />
+          <h2 className="text-lg font-bold text-foreground tracking-tight">Prompt Généré</h2>
+        </div>
         <button 
           onClick={handleCopy}
-          className="btn btn-primary flex items-center gap-2 text-sm"
+          className="btn btn-primary flex items-center gap-2 text-xs"
         >
-          {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-          {copied ? 'Copié !' : 'Copier'}
+          {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+          {copied ? 'Copié' : 'Copier'}
         </button>
       </div>
       
-      <div className="flex-1 bg-black/30 rounded-lg p-4 overflow-auto font-mono text-sm text-gray-300 whitespace-pre-wrap border border-white/10">
+      <div className="flex-1 bg-black/50 rounded-lg p-4 overflow-auto font-mono text-xs text-gray-300 whitespace-pre-wrap border border-white/5 shadow-inner">
         {generatePrompt()}
       </div>
     </div>
